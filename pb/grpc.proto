@@ -1,0 +1,22 @@
+// protoc --proto_path .\pb\ --go_out=.  --go-grpc_out=. .\pb\grpc.proto
+syntax = "proto3";
+
+package pb;
+
+option go_package = "libs/;grpc";
+
+service HelloGRPC {
+  // Checking Server
+  rpc ServerCheck (Ping) returns (Pong) {}
+}
+
+// Client Say Hello
+message Ping {
+  string hello = 1;
+}
+
+// Server Say Alive
+message Pong {
+  bool alive = 1;
+  string message = 2;
+}
